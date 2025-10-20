@@ -72,10 +72,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern FILE *yyin;
+int yyparse();
+
 int yylex(void);
 int yyerror(const char *s);
 
-#line 79 "parser.tab.c"
+#line 82 "parser.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -110,7 +113,7 @@ enum yysymbol_kind_t
   YYSYMBOL_TEST = 4,                       /* TEST  */
   YYSYMBOL_YYACCEPT = 5,                   /* $accept  */
   YYSYMBOL_commands = 6,                   /* commands  */
-  YYSYMBOL_start = 7                       /* start  */
+  YYSYMBOL_command = 7                     /* command  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -496,7 +499,7 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    12,    12,    14,    18,    19
+       0,    15,    15,    17,    21,    22
 };
 #endif
 
@@ -513,7 +516,7 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
 static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "CONFIG", "TEST",
-  "$accept", "commands", "start", YY_NULLPTR
+  "$accept", "commands", "command", YY_NULLPTR
 };
 
 static const char *
@@ -1052,20 +1055,20 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 4: /* start: CONFIG  */
-#line 18 "parser.y"
+  case 4: /* command: CONFIG  */
+#line 21 "parser.y"
                 { printf("Saw CONFIG\n"); }
-#line 1059 "parser.tab.c"
+#line 1062 "parser.tab.c"
     break;
 
-  case 5: /* start: TEST  */
-#line 19 "parser.y"
+  case 5: /* command: TEST  */
+#line 22 "parser.y"
                 { printf("Saw TEST\n"); }
-#line 1065 "parser.tab.c"
+#line 1068 "parser.tab.c"
     break;
 
 
-#line 1069 "parser.tab.c"
+#line 1072 "parser.tab.c"
 
       default: break;
     }
@@ -1258,7 +1261,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 21 "parser.y"
+#line 24 "parser.y"
 
 
 int yyerror(const char *s) {
@@ -1271,6 +1274,13 @@ int yywrap(void) {
 }
 
 int main(void) {
-    return yyparse();
+  yyin = fopen("input.test", "r"); // open the input.test file
+  if(!yyin) { // error handing for when there is no file
+    perror("input.test");
+    return 1;
+  }
+  yyparse(); // start parsing from the file opened
+  fclose(yyin);
+  return 0;
 }
 

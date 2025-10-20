@@ -2,6 +2,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+extern FILE *yyin;
+int yyparse();
+
 int yylex(void);
 int yyerror(const char *s);
 %}
@@ -16,7 +19,7 @@ commands: /*could be zero or more commands*/
 
 command: /*the command could be config or test*/
       CONFIG    { printf("Saw CONFIG\n"); }
-      | TEST      { printf("Saw TEST\n"); }
+      | TEST    { printf("Saw TEST\n"); }
 ;
 %%
 
@@ -30,6 +33,13 @@ int yywrap(void) {
 }
 
 int main(void) {
-    return yyparse();
+  yyin = fopen("input.test", "r"); // open the input.test file
+  if(!yyin) { // error handing for when there is no file
+    perror("input.test");
+    return 1;
+  }
+  yyparse(); // start parsing from the file opened
+  fclose(yyin);
+  return 0;
 }
 
