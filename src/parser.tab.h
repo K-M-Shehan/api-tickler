@@ -55,22 +55,21 @@ extern int yydebug;
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
     LET = 258,                     /* LET  */
-    ONE_LINE_COMMENT = 259,        /* ONE_LINE_COMMENT  */
-    IDENTIFIER = 260,              /* IDENTIFIER  */
-    NON_NEG_INT = 261,             /* NON_NEG_INT  */
-    CONFIG = 262,                  /* CONFIG  */
-    BASE_URL = 263,                /* BASE_URL  */
-    HEADER = 264,                  /* HEADER  */
-    TEST = 265,                    /* TEST  */
-    GET = 266,                     /* GET  */
-    POST = 267,                    /* POST  */
-    PUT = 268,                     /* PUT  */
-    DELETE = 269,                  /* DELETE  */
-    EXPECT = 270,                  /* EXPECT  */
-    STATUS = 271,                  /* STATUS  */
-    BODY = 272,                    /* BODY  */
-    CONTAINS = 273,                /* CONTAINS  */
-    EQUALS = 274                   /* EQUALS  */
+    IDENTIFIER = 259,              /* IDENTIFIER  */
+    NON_NEG_INT = 260,             /* NON_NEG_INT  */
+    CONFIG = 261,                  /* CONFIG  */
+    BASE_URL = 262,                /* BASE_URL  */
+    HEADER = 263,                  /* HEADER  */
+    TEST = 264,                    /* TEST  */
+    GET = 265,                     /* GET  */
+    POST = 266,                    /* POST  */
+    PUT = 267,                     /* PUT  */
+    DELETE = 268,                  /* DELETE  */
+    EXPECT = 269,                  /* EXPECT  */
+    STATUS = 270,                  /* STATUS  */
+    BODY = 271,                    /* BODY  */
+    CONTAINS = 272,                /* CONTAINS  */
+    EQUALS = 273                   /* EQUALS  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif

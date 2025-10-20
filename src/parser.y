@@ -9,7 +9,7 @@ int yylex(void);
 int yyerror(const char *s);
 %}
 
-%token LET ONE_LINE_COMMENT IDENTIFIER NON_NEG_INT
+%token LET IDENTIFIER NON_NEG_INT
 %token CONFIG BASE_URL HEADER TEST
 %token GET POST PUT DELETE
 %token EXPECT STATUS BODY CONTAINS
@@ -30,6 +30,7 @@ command: /*the command could be config or test*/
 variable: 
         LET IDENTIFIER EQUALS NON_NEG_INT { printf("I see a variable declared and instantiated with a non negative number\n"); }        
 ;
+
 %%
 
 int yyerror(const char *s) {

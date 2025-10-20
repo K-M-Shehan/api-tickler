@@ -19,3 +19,6 @@ The parser can now accept any file given to it (the main function is accepting a
 Also I have defined a bunch of keywords and implemented the ability to declare and instantiate a variable with a non negative number, but we still can't store the variables.
 
 Next I have to setup proper error handling for the variable definition and instatiation.
+
+## Day 1 Oct 20th 5:43 PM
+I changed the comment rule in the scanner to completely omit comment lines, so it no longer returns anything.

@@ -4,7 +4,7 @@
 
 %%
 "let"                   { return LET; }
-"//"                    { return ONE_LINE_COMMENT; }
+"//".*                  { /*skips the whole line*/ }
 [0-9]+                  { return NON_NEG_INT; }
 
 "config"                { return CONFIG; }
