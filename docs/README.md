@@ -12,3 +12,10 @@ I have implemented a small parser and scanner with bison and flex, it was awesom
 I have made it so that the parser can now read from a file called "input.test", the next step would be to make it so that we can specify the name of the test file.
 
 I learnt that flex normally reads input from a variable called yyin which takes stdin as input (the command line input stream), what I did was that I made yyin point to a specific file (that is input.test), so the lexer read from there instead of from the command line.
+
+## Day 1 Oct 20th 5:13 PM
+The parser can now accept any file given to it (the main function is accepting arguements now) or even go with the command line. 
+
+Also I have defined a bunch of keywords and implemented the ability to declare and instantiate a variable with a non negative number, but we still can't store the variables.
+
+Next I have to setup proper error handling for the variable definition and instatiation.
