@@ -5,7 +5,7 @@
 %%
 "let"                   { return LET; }
 "//".*                  { /*skips the whole line*/ }
-[0-9]+                  { return NON_NEG_INT; }
+[^-][0-9]+              { return NON_NEG_INT; }
 
 "config"                { return CONFIG; }
 "base_url"              { return BASE_URL; }
@@ -21,11 +21,13 @@
 "contains"              { return CONTAINS; }
 
 [A-Za-z_][A-Za-z0-9_]*  { return IDENTIFIER; }
+\"([^"\\]|\\.)*\"       { return STRING; }
 
 "="                     { return EQUALS; }
+"{"                     { return LBRACE; }
+"}"                     { return RBRACE; }
 [ \t\n]+                { /* skip whitespace */ }
 .                       { return yytext[0]; }
 %%
 
-// TODO implement strings, supports \* and \\
 // TODO no vars outside strings/paths

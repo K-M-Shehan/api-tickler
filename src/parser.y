@@ -13,7 +13,7 @@ int yyerror(const char *s);
 %token CONFIG BASE_URL HEADER TEST
 %token GET POST PUT DELETE
 %token EXPECT STATUS BODY CONTAINS
-%token EQUALS
+%token EQUALS STRING LBRACE RBRACE
 
 %%
 commands: /*could be zero or more commands*/
@@ -28,7 +28,12 @@ command: /*the command could be config or test*/
 ;
 
 variable: 
-        LET IDENTIFIER EQUALS NON_NEG_INT { printf("I see a variable declared and instantiated with a non negative number\n"); }        
+        LET IDENTIFIER EQUALS value { printf("I see a variable declared and instantiated with a non negative number or string\n"); }        
+;
+
+value:
+     NON_NEG_INT
+     | STRING
 ;
 
 %%

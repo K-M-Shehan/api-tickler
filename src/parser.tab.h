@@ -69,7 +69,10 @@ extern int yydebug;
     STATUS = 270,                  /* STATUS  */
     BODY = 271,                    /* BODY  */
     CONTAINS = 272,                /* CONTAINS  */
-    EQUALS = 273                   /* EQUALS  */
+    EQUALS = 273,                  /* EQUALS  */
+    STRING = 274,                  /* STRING  */
+    LBRACE = 275,                  /* LBRACE  */
+    RBRACE = 276                   /* RBRACE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif

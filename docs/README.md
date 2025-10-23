@@ -22,3 +22,10 @@ Next I have to setup proper error handling for the variable definition and insta
 
 ## Day 1 Oct 20th 5:43 PM
 I changed the comment rule in the scanner to completely omit comment lines, so it no longer returns anything.
+
+## Day 2 Oct 23rd 10:40 AM
+Couldn't work on this project for some time because of some close deadlines of other projects.
+
+I introduced strings to the parser, and turns out bison cannot nest paranthesis in grammar rules as they also get recognized as literal token if not defined as such.
+
+So I made a new grammar rule for values of variables and now the parser can understand strings. Yay.
