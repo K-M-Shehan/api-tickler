@@ -1,0 +1,30 @@
+config {
+  base_url = "http://localhost:8080";
+  header "Content-Type" = "application/json";
+}
+
+let userId = 42;
+
+test LoginAndUpdate {
+  POST "/api/login" {
+    body = """
+    {
+      "username": "admin",
+      "password": "1234"
+    }
+    """;
+  };
+  expect status = 200..299;
+  expect body contains "token";
+
+  PUT "/api/users/$userId" {
+    body = """
+    {
+      "name": "Updated User",
+      "role": "ADMIN"
+    }
+    """;
+  };
+  expect status = 200..299;
+  expect body contains "updated";
+}

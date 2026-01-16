@@ -1,0 +1,41 @@
+// example2.test - Demonstrates triple-quoted strings and status range assertions
+
+config {
+    base_url = "http://localhost:8080";
+    header "Content-Type" = "application/json";
+}
+
+let adminUser = "admin";
+let adminPass = "1234";
+let userId = 42;
+
+test MultilineStringDemo {
+    POST "/api/login" {
+        body = """
+{
+  "username": "admin",
+  "password": "1234"
+}
+""";
+    };
+    expect status = 200..299;
+    expect body contains "token";
+}
+
+test StatusRangeExample {
+    GET "/api/users/$userId";
+    expect status = 200..299;
+    expect body contains "User";
+    
+    PUT "/api/users/$userId" {
+        body = """
+{
+  "name": "Updated User",
+  "role": "ADMIN"
+}
+""";
+    };
+    expect status = 200..299;
+    expect body contains "updated";
+    expect body contains "ADMIN";
+}
