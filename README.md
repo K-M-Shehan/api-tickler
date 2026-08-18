@@ -21,12 +21,21 @@ api-tickler/
 └── README.md              # This file
 ```
 
-## Prerequisites
+## Documentation
 
-```bash
-sudo apt-get update
-sudo apt-get install build-essential flex bison openjdk-11-jdk maven wget
-```
+Further documentation and guides live in the `docs/` folder:
+
+- [INSTALL.md](docs/INSTALL.md) — Installation and prerequisites
+- [USAGE.md](docs/USAGE.md) — How to build and run the toolset
+- [ARCHITECTURE.md](docs/ARCHITECTURE.md) — High-level architecture and build flow
+- [API.md](docs/API.md) — Backend API reference (endpoints used by generated tests)
+- [ERROR_MESSAGES.md](docs/ERROR_MESSAGES.md) — Parser/lexer error message guide
+- [LEXER.md](docs/LEXER.md) — Lexer (Flex) reference
+- [PARSER.md](docs/PARSER.md) — Parser (Bison) reference
+- [LANGUAGE.md](docs/LANGUAGE.md) — Language syntax & key features
+- [CONTRIBUTING.md](docs/CONTRIBUTING.md) — Contributing guidelines
+- [README.md](docs/README.md) — Devlog and day-to-day notes
+
 
 ## Quick Start
 
@@ -44,45 +53,6 @@ make parser
 ```bash
 ./run-tests.sh     # In terminal 2
 ```
-
-## Language Syntax
-
-### Complete Example
-
-```testlang
-config {
-  base_url = "http://localhost:8080";
-  header "Content-Type" = "application/json";
-}
-
-let user = "admin";
-let id = 42;
-
-test Login {
-  POST "/api/login" {
-    body = "{ \"username\": \"$user\", \"password\": \"1234\" }";
-  };
-  expect status = 200;
-  expect header "Content-Type" contains "json";
-  expect body contains "\"token\":";
-}
-
-test GetUser {
-  GET "/api/users/$id";
-  expect status = 200;
-  expect body contains "\"id\": 42";
-}
-```
-
-### Key Features
-
-- **Variables**: `let name = "value";` with `$name` substitution
-- **HTTP Methods**: GET, POST, PUT, DELETE
-- **Assertions**: status, header (equals/contains), body contains
-- **Config Block**: base_url and default headers
-- **Comments**: `// line comments`
-
-**Important:** Block requests (POST/PUT with `{}`) need a semicolon after `}`.
 
 ## Makefile Targets
 
@@ -119,7 +89,7 @@ void test_Login() throws Exception {
 
 ## Error Handling
 
-### Enhanced Error Messages ✨
+### Enhanced Error Messages
 
 The parser provides **detailed, actionable error messages** with:
 - **Line numbers** - Exact location of the error
@@ -136,12 +106,7 @@ Error on line 3: Expected number after 'status', but found ';'
   Should be: expect status = 200;
 ```
 
-See `ERROR_MESSAGES.md` for complete documentation and examples.
-
-### Demo Error Messages
-```bash
-./demo-errors.sh  # Shows all error types with examples
-```
+See [docs/ERROR_MESSAGES.md](docs/ERROR_MESSAGES.md) for complete documentation and examples.
 
 ## Common Issues
 
@@ -149,21 +114,9 @@ See `ERROR_MESSAGES.md` for complete documentation and examples.
 2. **Backend Not Running**: Start with `./run-backend.sh` first
 3. **String Escaping**: Use `\"` for quotes in JSON bodies
 
-## Project Status
-
-✅ Complete Flex scanner with all tokens  
-✅ Complete Bison parser with AST  
-✅ Java code generation with HttpClient  
-✅ Variable substitution working  
-✅ Spring Boot backend with 3 endpoints  
-✅ Build automation via Makefile  
-✅ End-to-end workflow tested  
 
 ## License
-
-MIT License
-
----
+[MIT License](./LICENSE)
 
 **Quick Demo:**
 ```bash
