@@ -1,13 +1,13 @@
 # Installation
 
-Prerequisites (tested on Debian):
+### Prerequisites (tested on Debian):
 
 ```bash
 sudo apt-get update
 sudo apt-get install -y build-essential flex bison openjdk-11-jdk maven wget curl
 ```
 
-Build steps
+### Build steps
 
 1. Build the parser and lexer:
 
@@ -27,6 +27,6 @@ cd backend && mvn clean package
 ./run-backend.sh
 ```
 
-Notes
+### Notes
 - `make parser` writes artifacts into `build/` and produces `build/testlang-parser`.
 - The top-level `Makefile` provides targets for the full workflow: `make run-tests`.

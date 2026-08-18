@@ -2,12 +2,12 @@
 
 This document summarizes common parser and lexer error messages produced by the TestLang++ toolchain and gives examples and suggested fixes.
 
-General format
+### General format
 - "Error on line <n>: <message>" — includes the line number and a short message.
 - Context: a snippet or description of what was expected.
 - Hint: actionable suggestion.
 
-Common errors
+### Common errors
 
 - Missing semicolon after block request
   - Symptom: "Expected ';' after '}'" or a generic syntax error on the following line.
