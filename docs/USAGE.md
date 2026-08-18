@@ -1,6 +1,6 @@
 # Usage
 
-Quick Start
+### Quick Start
 
 1. Build the parser and generate Java tests from `example.test`:
 
@@ -22,7 +22,7 @@ Full workflow (build parser → generate → compile → run):
 ./run-tests.sh
 ```
 
-Running the backend
+### Running the backend
 
 Start the Spring Boot backend before running tests that rely on `http://localhost:8080`:
 
@@ -30,7 +30,7 @@ Start the Spring Boot backend before running tests that rely on `http://localhos
 ./run-backend.sh
 ```
 
-Makefile targets of interest
+### Makefile targets of interest
 
 - `make parser` — build the flex/bison parser
 - `make example` — parse `example.test` → `GeneratedTests.java`
@@ -39,6 +39,6 @@ Makefile targets of interest
 - `make backend` — build the Spring Boot backend
 - `make run-backend` — start the backend (same as `./run-backend.sh`)
 
-Tips
+### Tips
 - If `run-tests.sh` warns the backend is not running, start the backend first or continue anyway for offline checks.
 - Example test files: `example.test`, `example2.test`, `demo.test`.
